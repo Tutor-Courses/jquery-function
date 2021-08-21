@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://pw.sabio.la/dist/all-site.css" rel="stylesheet" />
+
+
+</head>
+<body>
+
+    <div class="container workspace">
+
+        <div class="row">
+            <button id="showMovies" type="submit" class="btn btn-info ml-3 mb-5">Show movies button</button>
+            <button id="emptyMovies" type="button" class="btn btn-secondary ml-5 mb-5">Empty Movies button</button>
+        </div>
+
+        <div class="row">
+
+            <!-- Cloned Templates go inside the element below !! -->
+            <div class="col-md-5 clone-container"></div>
+
+        </div>
+    </div>
+
+
+
+    <script id="movieTemplate" type="text/template">
+        <div class="row my-3 t-3 card-movie ">
+            <div class="col-md-12 mb-4">
+                <div class="card border-0 shadow">
+                    <img src="https://i.pravatar.cc/400?img=48" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-0">Title in Template</h5>
+                        <div class="card-genre text-black-50">Genre in Template</div>
+                        <div class="card-year text-black-50">Year in Template</div>
+                        <button type="button" class="btn btn-danger deleteMovie mt-2">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!-- Do Not Edit or Remove this footer element -->
+    <footer class="do-not-remove container-fluid footer mx-auto  fb-targert sabio">
+        <p class="text-center">© Sabio.la 2019</p>
+    </footer>
+
+
+    <script id="candidateCode">
+
+        function startUp() {
+            wireHandlers();
+        }
+
+        function getMovies() {
+            var arrayOfObjects = [{
+                "id": "0001",
+                "title": "Half-Baked",
+                "genre": "Comedy",
+                "year": "1996",
+                "mainImage": "https://i.imgur.com/g0uqhH5.png"
+            }, {
+                "id": "0002",
+                "title": "Dumb & Dumber ",
+                "genre": "Comedy",
+                "year": "1997",
+                "mainImage": "https://i.imgur.com/g0uqhH5.png"
+            }, {
+                "id": "0003",
+                "title": "The Mask",
+                "genre": "Comedy",
+                "year": "1998",
+                "mainImage": "https://i.imgur.com/g0uqhH5.png"
+            }, {
+                "id": "0004",
+                "title": "Super Mario",
+                "genre": "Action",
+                "year": "1999",
+                "mainImage": "https://i.imgur.com/g0uqhH5.png"
+            }, {
+                "id": "0005",
+                "title": "Jurassic Park",
+                "genre": "Action",
+                "year": "2000",
+                "mainImage": "https://i.imgur.com/g0uqhH5.png"
+            }];
+
+            return arrayOfObjects;
+        }
+
+        function wireHandlers() {
+            $("#showMovies").on("click", onShowMovies);
+            $("#emptyMovies").on("click", emptyAllMovies);
+            $(".clone-container").on("click", ".t-3", onDeleteMovie);
+        }
+
+        function onShowMovies(e) {
+            e.preventDefault();
+            var movies = getMovies();
+            console.log(movies, e);
+            renderMovies(movies);
+        }
+
+        function getTemplate() {
+            var movieTemplateHtml = $("#movieTemplate").html();
+            var movieTemplateClone = $(movieTemplateHtml).clone();
+            return movieTemplateClone;
+        }
+
+        function renderMovies(moviesArr) {
+            if (Array.isArray(moviesArr)) {
+                for (let myIndex = 0; myIndex < moviesArr.length; myIndex++) {
+                    var clone = getTemplate();
+                    const movie = moviesArr[myIndex];
+                    clone.find().text(movie.id);
+                    clone.find(".card-title").text(movie.title);
+                    clone.find(".card-genre").text(movie.genre);
+                    clone.find(".card-year").text(movie.year);
+                    clone.find(".card-img-top").attr("src", movie.mainImage);
+                    $(".clone-container").append(clone);
+                }
+            }
+        }
+
+        function emptyAllMovies() {
+            $(".clone-container").empty();
+        }
+
+        function onDeleteMovie() {
+            $(this).closest('div').remove();
+        }
+    </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="js/script.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <button id="btn1">#btn1</button>
+            <button id="btn2">#btn2</button>
+            <button id="btn3">#btn3</button>
+            <button id="btn4">#btn4</button>
+            <button id="btn5">#btn5</button>
+            <button id="btn6">#btn6</button>
+
+        </div>
+        <br>
+        <div id="panel1"
+            style="background-color: aquamarine; height: 60px; width: 600px; border: 3px solid black; text-align: center;">
+            <h1 class="content">Heloo wolrd</h1>
+        </div>
+
+    </div>
+
+
+    <input type='text' id='txt1' />
+    <input type='button' id='button' value='Click me' />
+
+    <!-- Script -->
+
+<br>
+    <script>
+        $(document).ready(function () {
+
+            $('#button').click(function () {
+                $('#txt1').val("Button clicked");
+            });
+        });
+    </script>
+
+
+
+<!-- scripts for the buttons -->
+
+  
+
+
+
+
+
+<script>
+    $(function () {
+        $('#panel1').on('click', function () {
+            $('#panel1').slideToggle(200)
+        })
+
+    })
+</script>
+
+<script>
+    $(function () {
+        $('#btn1').on('click', function () {
+            $('#panel1').toggle()
+        })
+
+    })
+</script>
+
+<script>
+    $(function () {
+        $('#btn2').on('click', function () {
+            $('#panel1').slideToggle(200)
+        })
+
+    })
+</script>
+
+
+<script>
+    $(function () {
+        $('#btn3').on('click', function () {
+            $('#panel1').fadeToggle(200)
+            
+        })
+
+    })
+</script>
+
+<script>
+    $(function () {
+        $('#btn4').on('mouseover', function () {
+            $('#panel1').fadeOut(200)
+        })
+
+    })
+
+    $(function () {
+        $('#btn5').on('mouseover', function () {
+            $('#panel1').fadeIn(200)
+        })
+
+    })
+
+    $(function () {
+        $('#btn6').on('click', function () {
+            $('#panel1 .content').html("Avenger assemmble")
+         
+        })
+
+    })
+</script>
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</body>
+
+</html>

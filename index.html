@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title>Assessment - Movies From Arrays</title>
+    <link href="https://pw.sabio.la/dist/all-site.css" rel="stylesheet" />
+    <!-- <script src="https://pw.sabio.la/api/js/site"></script>
+    <script src="https://pw.sabio.la/api/js/specs/assessments/60d325baA8/assessment-091A.js"></script> -->
+
+    <style>
+    </style>
+</head>
+
+<body class="sabio" data-ins="pw-assessments-60d325ba8A-assessment_1A" data-ins-css="false">
+    <div class="alert alert-danger text-left assesment-not-load" role="alert">
+        <p>If you are still seeing this, you assessment has not loaded correctly. Once you see this message
+            disappear
+            and the instructions loaded below you will know you are on your way.</p>
+    </div>
+    <!-- Do Not Edit or Remove this nav element -->
+    <nav class="do-not-remove navbar navbar-expand-md navbar-dark bg-dark sabio"></nav>
+
+    <div class="container workspace">
+
+        <div class="row">
+            <button id="showMovies" type="submit" class="btn btn-info ml-3 mb-5">Show movies</button>
+            <button id="emptyMovies" type="button" class="btn btn-secondary ml-5 mb-5">Empty Movies</button>
+        </div>
+
+        <div class="row">
+
+            <!-- Cloned Templates go inside the element below !! -->
+            <div class="col-md-5 clone-container"></div>
+
+        </div>
+    </div>
+    <script id="movieTemplate" type="text/template">
+        <div class="row my-3 t-3 card-movie ">
+            <div class="col-md-12 mb-4">
+                <div class="card border-0 shadow">
+                    <img src="https://i.pravatar.cc/400?img=48" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-0">Title in Template</h5>
+                        <div class="card-genre text-black-50">Genre in Template</div>
+                        <div class="card-year text-black-50">Year in Template</div>
+                        <button type="button" class="btn btn-danger deleteMovie mt-2">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!-- Do Not Edit or Remove this footer element -->
+    <footer class="do-not-remove container-fluid footer mx-auto  fb-targert sabio">
+        <p class="text-center">© Sabio.la 2019</p>
+    </footer>
+
+    <!--👇🏻 All your JavaScript code goes below here inside this script tag 👇🏻 -->
+    <script id="candidateCode">
+
+
+        function startUp() {
+
+            wireHandlers();
+
+
+
+
+
+        }
+        function wireHandlers() {
+            $("#showMovies").on("click", onShowMovies)
+
+            $("#emptyMovies").on("click", emptyAllMovies)
+            $(".deleteMovie",).on("click", onDeleteMovie)
+
+
+
+        }
+        function getMovies() {
+            let candidate = [{
+                "id": "06",
+                "title": "WebDesigner",
+                "genre": "Male",
+                "year": "1972",
+                "mainImage": "https://i.insider.com/59370c0ad508f841018b45b8?width=300&format=jpeg&auto=webp"
+
+            }, {
+                "id": "07",
+                "title": "ProjectManager",
+                "genre": "Female",
+                "year": "1972",
+                "mainImage": "https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fvickyvalet%2Ffiles%2F2018%2F07%2F17_1977_270_170724-2-1200x800.jpg"
+            }, {
+                "id": "08",
+                "title": "MedicalAssistant",
+                "genre": "Male",
+                "year": "1972",
+                "mainImage": "https://s3.us-east-1.amazonaws.com/co-assets/assets/image-transforms/images/569099/man-on-video-call-working-remote_d88e4f0344a8f3f0bf6d644a30195abc.jpg"
+            }, {
+                "id": "09",
+                "title": "PresidentOfSales",
+                "genre": "Female",
+                "year": "1972",
+                "mainImage": "https://www.journalofaccountancy.com/content/dam/jofa/issues/2015/jul/shaylynn-fuller.jpg"
+            }, {
+                "id": "10",
+                "title": "AccountExecutive",
+                "genre": "Male",
+                "year": "1972",
+                "mainImage": "https://image.shutterstock.com/image-photo/enthusiastic-chic-handsome-charismatic-classy-600w-770290597.jpg"
+            }]
+            return candidate;
+
+        }
+
+
+
+
+        function onShowMovies(e) {
+
+            e.preventDefault();
+
+
+            let movies = getMovies();
+
+
+            console.log(movies);
+
+            renderMovies(movies);
+
+        }
+
+
+
+
+
+        function getTemplate() {
+
+            var target =
+                $($("#movieTemplate").html());
+
+            return target
+        }
+
+
+
+
+        function renderMovies(moviesArr) {
+            console.log("renderMovies array", moviesArr)
+
+            for (let index = 0; index < moviesArr.length; index++) {
+
+                var clone = $($("#movieTemplate").html()).clone()
+
+                // clone.find(".card-movie").attr("src", moviesArr.mainImage)
+                // clone.find(".card-body").text(moviesArr.genre)
+                // clone.find(".card-title").text(moviesArr.title)
+                // clone.find("card-genre").text(moviesArr.genre)
+                // clone.find(".card-year").text(moviesArr.year)
+
+                $(".clone-container").append(getTemplate)
+
+
+                const currentMovie = moviesArr[index];
+                console.log(currentMovie)
+
+
+            }
+
+            // $($("#movieTemplate").html()).clone()
+
+            // jqClone.find(".card-title").html("New content");
+            // jqClone.find(".card-text").html("New content");
+            // jqClone.find("img").attr("src", "https://i.dailymail.co.uk/i/pix/2010/10/15/article-1320701-01E60A8000000578-401_468x300.jpg")
+
+
+            // $(".clone-container").append(getTemplate)
+            // $(".clone-container").append(getTemplate)
+            // $(".clone-container").append(getTemplate)
+            // $(".clone-container").append(getTemplate)
+
+
+        }
+
+
+
+
+        function emptyAllMovies() {
+
+
+            $(".container workspace").empty()
+        }
+
+        function onDeleteMovie() {
+
+
+            $(".clone-container").remove();
+
+        }
+
+
+
+        // function addNunmbers(firtsNumber) 
+        // {
+        //     console.log(firtsNumber)
+
+        // }
+        //     var myResult = addNunmbers( 75, 5, 2)
+    </script>
+    <!-- 🛑 Do Not Write Any Code Below here -->
+
+</body>
+
+</html>
